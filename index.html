@@ -43,79 +43,79 @@
   <button onclick="yesClicked()">Yes 💕</button>
   <button id="no" onclick="noClicked()">No 😢</button>
 
-  <script>
-    let noCount = 0;
+ <script>
+  let noCount = 0;
 
-    const noMessages = [
-      "are you sure?",
-      "really sure?",
-      "think again!",
-      "last chance!",
-      "you might regret this!",
-      "surely not?",
-      "please 😢",
-      "are you absolutely certain"
-    ];
+  const noMessages = [
+    "are you sure?",
+    "really sure?",
+    "think again!",
+    "last chance!",
+    "you might regret this!",
+    "surely not?",
+    "please 😢",
+    "are you absolutely certain"
+  ];
 
-    function yesClicked() {
-      // HEART CONFETTI EXPLOSION 💖
-      const duration = 2000;
-      const end = Date.now() + duration;
+  function yesClicked() {
+    // 💖 EMOJI HEART CONFETTI 💖
+    const heart = confetti.shapeFromText({ text: "💖", scalar: 2 });
+    const heart2 = confetti.shapeFromText({ text: "💘", scalar: 2 });
+    const heart3 = confetti.shapeFromText({ text: "❤️", scalar: 2 });
 
-      (function frame() {
-        confetti({
-          particleCount: 6,
-          angle: 60,
-          spread: 55,
-          origin: { x: 0 },
-          shapes: ["heart"],
-          colors: ["#ff4d6d", "#ff758f", "#ffb3c6"]
-        });
-        confetti({
-          particleCount: 6,
-          angle: 120,
-          spread: 55,
-          origin: { x: 1 },
-          shapes: ["heart"],
-          colors: ["#ff4d6d", "#ff758f", "#ffb3c6"]
-        });
+    const duration = 2000;
+    const end = Date.now() + duration;
 
-        if (Date.now() < end) {
-          requestAnimationFrame(frame);
-        }
-      })();
+    (function frame() {
+      confetti({
+        particleCount: 5,
+        angle: 60,
+        spread: 70,
+        origin: { x: 0 },
+        shapes: [heart, heart2, heart3]
+      });
 
-      document.body.innerHTML = `
-        <h1>yay i love you sooo fucking much</h1>
-        <h2>my cutie boo boo bear 💖🐻</h2>
-      `;
-    }
+      confetti({
+        particleCount: 5,
+        angle: 120,
+        spread: 70,
+        origin: { x: 1 },
+        shapes: [heart, heart2, heart3]
+      });
 
-    function noClicked() {
-      const noButton = document.getElementById("no");
-      const question = document.getElementById("question");
-
-      if (noCount < noMessages.length) {
-        question.innerText = noMessages[noCount];
-        noCount++;
+      if (Date.now() < end) {
+        requestAnimationFrame(frame);
       }
+    })();
 
-      // After the 8th click, the button runs away forever
-      if (noCount >= 8) {
-        question.innerText = "this could be a mistake";
-        noButton.onmouseover = moveNo;
-      }
+    document.body.innerHTML = `
+      <h1>yay i love you sooo fucking much</h1>
+      <h2>my cutie boo boo bear 💖🐻</h2>
+    `;
+  }
+
+  function noClicked() {
+    const noButton = document.getElementById("no");
+    const question = document.getElementById("question");
+
+    if (noCount < noMessages.length) {
+      question.innerText = noMessages[noCount];
+      noCount++;
     }
 
-    function moveNo() {
-      const noButton = document.getElementById("no");
-      const x = Math.random() * (window.innerWidth - 150);
-      const y = Math.random() * (window.innerHeight - 80);
-
-      noButton.style.left = x + "px";
-      noButton.style.top = y + "px";
+    if (noCount >= 8) {
+      question.innerText = "this could be a mistake";
+      noButton.onmouseover = moveNo;
     }
-  </script>
+  }
 
-</body>
-</html>
+  function moveNo() {
+    const noButton = document.getElementById("no");
+    const x = Math.random() * (window.innerWidth - 150);
+    const y = Math.random() * (window.innerHeight - 80);
+
+    noButton.style.left = x + "px";
+    noButton.style.top = y + "px";
+ }
+</script>
+
