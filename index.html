@@ -2,176 +2,77 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Be My Valentine 💘</title>
+  <title>Will You Be My Valentine?</title>
   <style>
     body {
-      font-family: 'Comic Sans MS', cursive, sans-serif;
-      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
       height: 100vh;
       margin: 0;
       display: flex;
       justify-content: center;
       align-items: center;
-      overflow: hidden;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      font-family: Arial, sans-serif;
+      text-align: center;
     }
 
     .container {
-      background: white;
+      background: pink;
       padding: 40px;
       border-radius: 20px;
-      text-align: center;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-      max-width: 400px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
     }
 
     h1 {
-      color: #ff4d6d;
       margin-bottom: 20px;
-    }
-
-    #message {
-      margin: 15px 0;
-      font-size: 18px;
-      color: #333;
-      min-height: 24px;
     }
 
     button {
       font-size: 18px;
-      padding: 12px 24px;
+      padding: 10px 25px;
       margin: 10px;
-      border-radius: 30px;
       border: none;
+      border-radius: 10px;
       cursor: pointer;
-      transition: transform 0.2s ease;
     }
 
-    #yesBtn {
-      background: #ff4d6d;
+    .yes {
+      background-color: #ff4d6d;
       color: white;
     }
 
-    #yesBtn:hover {
-      transform: scale(1.1);
+    .no {
+      background-color: #ccc;
+      color: black;
     }
 
-    #noBtn {
-      background: #ddd;
-      color: #333;
-      position: relative;
-    }
-
-    canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      pointer-events: none;
+    #message {
+      margin-top: 25px;
+      font-size: 22px;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
-
-  <canvas id="confetti"></canvas>
-
   <div class="container">
-    <h1>Will you be my Valentine? 💖</h1>
+    <h1>💖 Will you be my Valentine? 💖</h1>
+
+    <button class="yes" onclick="sayYes()">Yes 💕</button>
+    <button class="no" onclick="sayNo()">No 💔</button>
+
     <div id="message"></div>
-    <button id="yesBtn">Yes 💘</button>
-    <button id="noBtn">No 💔</button>
   </div>
 
   <script>
-    const noBtn = document.getElementById("noBtn");
-    const yesBtn = document.getElementById("yesBtn");
-    const message = document.getElementById("message");
-
-    let noClicks = 0;
-
-    const noResponses = [
-      "are you sure?",
-      "really sure?",
-      "think again!",
-      "last chance!",
-      "you might regret this!",
-      "surely not?",
-      "please 😢",
-      "are you absolutely certain?",
-      "this could be a mistake"
-    ];
-
-    noBtn.addEventListener("click", () => {
-      if (noClicks < noResponses.length) {
-        message.textContent = noResponses[noClicks];
-        noClicks++;
-      } else {
-        moveNoButton();
-      }
-    });
-
-    function moveNoButton() {
-      const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
-      const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
-      noBtn.style.position = "fixed";
-      noBtn.style.left = x + "px";
-      noBtn.style.top = y + "px";
+    function sayYes() {
+      document.getElementById("message").innerHTML =
+        "YAY!!! I love you so much 😍💘💖";
     }
 
-    noBtn.addEventListener("mouseover", () => {
-      if (noClicks >= noResponses.length) {
-        moveNoButton();
-      }
-    });
-
-    yesBtn.addEventListener("click", () => {
-      message.innerHTML =
-        "🎉 yay i love you sooo fucking much my cutie boo boo bear 💕";
-      startConfetti();
-    });
-
-    // CONFETTI 🎊
-    const canvas = document.getElementById("confetti");
-    const ctx = canvas.getContext("2d");
-
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    let confetti = [];
-
-    function startConfetti() {
-      confetti = [];
-      for (let i = 0; i < 200; i++) {
-        confetti.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          r: Math.random() * 6 + 2,
-          d: Math.random() * 50,
-          color: `hsl(${Math.random() * 360}, 100%, 50%)`,
-          tilt: Math.random() * 10 - 10
-        });
-      }
-      animateConfetti();
-    }
-
-    function animateConfetti() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      confetti.forEach((c, i) => {
-        ctx.beginPath();
-        ctx.fillStyle = c.color;
-        ctx.arc(c.x, c.y, c.r, 0, Math.PI * 2);
-        ctx.fill();
-
-        c.y += Math.cos(c.d) + 1;
-        c.x += Math.sin(c.d);
-        c.d += 0.1;
-
-        if (c.y > canvas.height) {
-          confetti[i].y = -10;
-        }
-      });
-
-      requestAnimationFrame(animateConfetti);
+    function sayNo() {
+      document.getElementById("message").innerHTML =
+        "😢💔";
     }
   </script>
 </body>
 </html>
+
