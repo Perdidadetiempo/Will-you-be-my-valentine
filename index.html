@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Valentine 💖 </title>
+  <title>Valentine 💖</title>
 
   <style>
     body {
@@ -54,7 +54,6 @@
     /* Floating hearts */
     .heart {
       position: absolute;
-      color: red;
       font-size: 24px;
       animation: floatUp 4s linear infinite;
     }
@@ -99,48 +98,12 @@
     function yesClicked() {
       document.getElementById("message").innerHTML =
         "YAY!!! I love you so much 😍💘💖";
+
+      // Remove the No button completely
+      document.getElementById("noBtn").style.display = "none";
+
       startHearts();
     }
 
     function noClicked() {
-      const messageDiv = document.getElementById("message");
-      const noBtn = document.getElementById("noBtn");
-
-      if (noClicks < messages.length) {
-        messageDiv.innerHTML = messages[noClicks];
-      } else {
-        // Make button impossible to click
-        noBtn.onmouseover = moveButton;
-        messageDiv.innerHTML = "😏 Too slow...";
-      }
-
-      noClicks++;
-    }
-
-    function moveButton() {
-      const noBtn = document.getElementById("noBtn");
-      const x = Math.random() * (window.innerWidth - 100);
-      const y = Math.random() * (window.innerHeight - 50);
-      noBtn.style.position = "absolute";
-      noBtn.style.left = x + "px";
-      noBtn.style.top = y + "px";
-    }
-
-    function startHearts() {
-      setInterval(() => {
-        const heart = document.createElement("div");
-        heart.className = "heart";
-        heart.innerHTML = "💖";
-        heart.style.left = Math.random() * window.innerWidth + "px";
-        heart.style.bottom = "0px";
-        document.body.appendChild(heart);
-
-        setTimeout(() => {
-          heart.remove();
-        }, 4000);
-      }, 300);
-    }
-  </script>
-
-</body>
-</html>
+      const messageDiv = document.ge
