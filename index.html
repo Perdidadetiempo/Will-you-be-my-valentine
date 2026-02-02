@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Will You Be My Valentine?</title>
+  <meta charset="UTF-8">
+  <title>Valentine 💖</title>
+
   <style>
     body {
       height: 100vh;
@@ -10,24 +11,20 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      background: pink;
       font-family: Arial, sans-serif;
-      text-align: center;
     }
 
-    .container {
-      background: pink;
+    .box {
+      background: white;
       padding: 40px;
       border-radius: 20px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    }
-
-    h1 {
-      margin-bottom: 20px;
+      text-align: center;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
     }
 
     button {
-      font-size: 18px;
+      font-size: 20px;
       padding: 10px 25px;
       margin: 10px;
       border: none;
@@ -41,38 +38,38 @@
     }
 
     .no {
-      background-color: #ccc;
-      color: black;
+      background-color: #cccccc;
     }
 
     #message {
       margin-top: 25px;
-      font-size: 22px;
-      font-weight: bold;
+      font-size: 24px;
     }
   </style>
 </head>
+
 <body>
-  <div class="container">
+
+  <div class="box">
     <h1>💖 Will you be my Valentine? 💖</h1>
 
-    <button class="yes" onclick="sayYes()">Yes 💕</button>
-    <button class="no" onclick="sayNo()">No 💔</button>
+    <button class="yes" onclick="yesClicked()">Yes 💕</button>
+    <button class="no" onclick="noClicked()">No 💔</button>
 
     <div id="message"></div>
   </div>
 
   <script>
-    function sayYes() {
+    function yesClicked() {
       document.getElementById("message").innerHTML =
         "YAY!!! I love you so much 😍💘💖";
     }
 
-    function sayNo() {
+    function noClicked() {
       document.getElementById("message").innerHTML =
         "😢💔";
     }
   </script>
+
 </body>
 </html>
-
